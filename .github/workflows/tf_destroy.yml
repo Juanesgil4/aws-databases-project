@@ -46,6 +46,7 @@ jobs:
         - name: Download terraform.tfstate
           uses: actions/download-artifact@v3
           with:
+              workflow: main.yml
               name: terraform.tfstate
 
         - name: validate project structure
