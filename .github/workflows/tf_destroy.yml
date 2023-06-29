@@ -1,9 +1,6 @@
 name: Terraform Destroy with GitHub Actions
 
-on: 
-  workflow_dispatch:
-    branches:
-      - deploy
+on: workflow_dispatch
       
 
 env:
@@ -46,8 +43,7 @@ jobs:
         - name: Download terraform.tfstate
           uses: actions/download-artifact@v3
           with:
-              workflow: main.yml
-              name: terraform.tfstate
+              name: terraform.tfstate-${{ github.sha }}
 
         - name: validate project structure
           run: tree

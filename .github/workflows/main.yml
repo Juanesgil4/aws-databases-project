@@ -1,9 +1,6 @@
 name: Terraform Deploy with GitHub Actions
 
-on: 
-  workflow_dispatch:
-    branches:
-      - deploy  
+on: workflow_dispatch 
 
 env:
   PROJECT_DIR: projects/ecs-kinesis-timestream
@@ -67,7 +64,7 @@ jobs:
         - name: Upload Terraform State
           uses: actions/upload-artifact@v3
           with:
-            name: terraform.tfstate
+            name: terraform.tfstate-${{ github.sha }}
             path: projects/ecs-kinesis-timestream/terraform/terraform.tfstate
 
     
